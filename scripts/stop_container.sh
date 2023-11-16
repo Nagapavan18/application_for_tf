@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Identify the running container ID or name
-CONTAINER_ID=$(docker ps -qf "ancestor=571888835380.dkr.ecr.us-east-1.amazonaws.com/python-repo:latest")
+# Get the IDs of running containers publishing port 8000
+running_containers=$(sudo docker ps -q --filter "publish=8000")
 
-# Check if a container is running
-if [ -n "$CONTAINER_ID" ]; then
-    # Stop the running container
-    docker stop "$CONTAINER_ID"
-    echo "Container stopped successfully."
-else
-    echo "No running container found for the specified image."
-fi
+# Output the IDs
+echo "Containers to stop:"
+echo "$running_containers"
+
+# Stop each container
+while IFS= read -r container_id; do
+    echo "Stopping container $container_id..."
+    sudo docker stop "$container_id"
+done <<< "$running_containers"
