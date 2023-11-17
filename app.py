@@ -7,8 +7,8 @@ app = Flask(__name__)
 db_config = {
     'host': 'rds-db.cijfaqoqykuo.us-east-1.rds.amazonaws.com',
     'user': 'foo',
-    'password': 'gD]>Pm1)}Ou)NM%4+MuWfiR|YxrO',
-    'database': 'mydb'
+    'password': 'D$u8[YVH5*O6vwmdi<2N$!RO]D[:',
+    'database': 'rds-db'
 }
 
 # Create a 'guestbook' table in MySQL with columns 'id', 'name', 'message', and 'timestamp'
